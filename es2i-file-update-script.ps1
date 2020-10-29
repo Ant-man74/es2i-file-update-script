@@ -51,21 +51,18 @@ Function BackupCopy-File {
   Copy-Item -Path "$sourceFolderPath\$filename" -Destination "$targetFolderPath\$filename" -Force
 }
 
-# Constant
+# ----------- Constant -----------
 
 # The folder containing the unzipped files
-# $sourceFolder = "D:\_sources\10581\esirius"
+$sourceFolder = "D:\_sources\10581\esirius"
 # Where do the file need to be copied
-# $targetFolder = "D:\programs\eSirius-14"
+$targetFolder = "D:\programs\eSirius-14"
 # The folder containing the font definition
-# $fontSourceFolder = "D:\_sources\10581\Font_Roboto"
+$fontSourceFolder = "D:\_sources\10581\Font_Roboto"
 # The mySql connector .msi file
-# $mysqlConnectorMsi = "D:\_sources\10581\mysql-connector-net-8.0.16.msi"
+$mysqlConnectorMsi = "D:\_sources\10581\mysql-connector-net-8.0.16.msi"
 
-$fontSourceFolder = "C:\Users\amercier\Documents\Projects\esii-ESII\Clients\Etat\conf_folder_esirius_14_Etat_GE\Font_Roboto"
-$sourceFolder = "C:\Users\amercier\Documents\Projects\esii-ESII\Clients\Etat\conf_folder_esirius_14_Etat_GE\testground\source\V14_0_0"
-$targetFolder = "C:\Users\amercier\Documents\Projects\esii-ESII\Clients\Etat\conf_folder_esirius_14_Etat_GE\testground\target"
-$mysqlConnectorMsi = "C:\Users\amercier\Documents\Projects\esii-ESII\Clients\Etat\conf_folder_esirius_14_Etat_GE\mysql-connector-net-8.0.16.msi"
+# ---------- ---------- ----------
 
 # eSecurity files (esecurity-commons.properties, esecurity-commons-users.properties)
 $currentFolder = "conf\esecurity\config"
