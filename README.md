@@ -1,5 +1,9 @@
 # es2i-file-update-script
 
+## Utilisation
+
+.\es2i-setup-script.ps1 -env DEV -folderBackup 0 -fileBackup 0
+
 ## Command Line Option
 
 - -env: option requise, valeur possible: DEV, PROD, REC. Indique l'environnement à copier
