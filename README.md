@@ -13,8 +13,13 @@
 - Le dossier contenant les différents environnement
 - Une instalation eSirius
 
-## A Modifier
+## A Faire pour chaque exécution
 
-- Pour que le script fonctionne, changer les constantes (ligne 50) à votre convenance du script es2i-file-update-script.ps1
+- Pour que le script fonctionne, changer les constantes (ligne 50) à votre convenance du script es2i-setup-script.ps1
 
 - Le script FontInstallation.ps1 doit être exécuté à chaque démarrage de la machine, il est conseillé de le mettre en script de démarage
+
+## Todo
+
+- password-manager-es2i
+- second script d'injection en BDD
