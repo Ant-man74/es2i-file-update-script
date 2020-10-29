@@ -64,6 +64,8 @@ $mysqlConnectorMsi = "D:\_sources\10581\mysql-connector-net-8.0.16.msi"
 
 # ---------- ---------- ----------
 
+Stop-Service -Name "Apache Tomcat 9.0.31"
+
 # eSecurity files (esecurity-commons.properties, esecurity-commons-users.properties)
 $currentFolder = "conf\esecurity\config"
 BackupCopy-File -sourceFolderPath "$sourceFolder\$env\$currentFolder" -targetFolderPath "$targetFolder\$currentFolder\" -filename "esecurity-commons.properties"
@@ -123,20 +125,15 @@ Copy-Item -Path "$sourceFolder\$env\$currentFolder\i18n" -Destination "$targetFo
 Backup-Folder "$targetFolder\$currentFolder\Element"
 Copy-Item -Path "$sourceFolder\$env\$currentFolder\Element" -Destination "$targetFolder\$currentFolder\" -Recurse -force
 
-# eAppointement-afc, eAppointement-oce, eAppointement-ocpm
-$currentFolder = "conf"
-Backup-Folder "$targetFolder\$currentFolder\appointment-afc"
-Copy-Item -Path "$sourceFolder\$env\$currentFolder\appointment-afc" -Destination "$targetFolder\$currentFolder\" -Recurse -force
-Backup-Folder "$targetFolder\$currentFolder\appointment-oce"
-Copy-Item -Path "$sourceFolder\$env\$currentFolder\appointment-oce" -Destination "$targetFolder\$currentFolder\" -Recurse -force
-# Backup-Folder "$targetFolder\$currentFolder\appointment-ocpm"
-# Copy-Item -Path "$sourceFolder\$env\$currentFolder\appointment-afc" -Destination "$targetFolder\$currentFolder\" -Recurse -force
+# eAppointement-afc, eAppointement-oce
+.\es2i-eappointement-site-creation $targetFolder "afc" "ScenarioStepThreeD"
+.\es2i-eappointement-site-creation $targetFolder "oce" "ScenarioStepThreeC"
 
 # changer config eRdv
 # Todo
 
 # es2i-password-manager
-# Todo
+.\es2i-password-manager $targetFolder "1" "1"
 
 # Install and uninstall tomcat service
 $currentFolder = "esirius-tools\apache-tomcat-9.0.31\bin"
@@ -144,9 +141,10 @@ Start-Process $targetFolder\$currentFolder\remove-tomcat-service.bat -Wait
 Start-Process $targetFolder\$currentFolder\install-tomcat-service.bat -Wait
 
 # font installation
-# Todo
 .\FontInstallation.ps1 -sourceFolder $fontSourceFolder
 
 # connecteur mySql
-$arguments = "/i `"$mysqlConnectorMsi`""
+$arguments = "/i `"$mysqlConnectorMsi`" /passive"
 Start-Process msiexec.exe -ArgumentList $arguments -Wait
+
+Start-Service -Name "Apache Tomcat 9.0.31"
