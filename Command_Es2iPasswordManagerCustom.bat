@@ -1,3 +1,7 @@
+@echo off
+cd "%~dp0"
+
+chcp 28591 > nul
 
 set action = %1
 set modifType = %2
