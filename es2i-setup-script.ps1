@@ -132,8 +132,8 @@ Copy-Item -Path "$sourceFolder\$env\$currentFolder\Element" -Destination "$targe
 # changer config eRdv
 # Todo
 
-# es2i-password-manager
-.\es2i-password-manager $targetFolder "1" "1"
+# es2i-password-manager first arg is admin password, second is esii password
+.\es2i-password-manager "1" "1"
 
 # Install and uninstall tomcat service
 $currentFolder = "esirius-tools\apache-tomcat-9.0.31\bin"
